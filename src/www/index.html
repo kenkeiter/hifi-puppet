@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>HiFi Puppet</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="styles/web.css" />
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an <strong>outdated</strong> 
+      browser. Please <a href="http://browsehappy.com/">upgrade your 
+      browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">
+      activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+    <header>
+      <div id="identity-bar">
+        <span class="logo"></span>
+        <h1>High Fidelity</h1>
+        <h2 class="project-name">Puppet</h2>
+        <label id="capture-enable-btn" class="checkbox toggle candy" style="width:100px">
+          <input id="checkbox-capture-enable" type="checkbox" />
+          <p>
+            <span>On</span>
+            <span>Off</span>
+          </p>
+          <a class="slide-button"></a>
+        </label>
+      </div>
+      <nav id="page-nav">
+        <ul>
+          <li>
+            <a href="#" id="reset-ahrs-btn">Reset AHRS</a>
+          </li>
+          <li class="info" id="latency-indicator">Ping failed.</li>
+          <li><a id="btn-about" href="#">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="pane-target" id="primary">
+      
+    </div>
+
+    <!-- Bring in JS dependencies and initialize the application. -->
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/jquery.websocket.js"></script>
+    <script src="scripts/three.min.js"></script>
+    <script src="scripts/stats.min.js"></script>
+    <script src="scripts/puppet.js"></script>
+    <script>
+      $(document).ready(function(){
+        window.application = app = new PuppetApplication({});
+        
+        $('#checkbox-capture-enable').change(function(){
+          if($(this).is(':checked')){
+            window.application.start()
+          }else{
+            window.application.stop()
+          }
+        });
+
+      });
+    </script>
+
+  </body>
+</html>

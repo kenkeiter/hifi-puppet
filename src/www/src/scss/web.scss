@@ -1,0 +1,64 @@
+@import "_reset";
+@import "_util";
+@import "_toggle";
+
+body{
+  background-color: #efefef;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+header{
+  background-color: #343C3E;
+
+  #identity-bar{
+    width: 90%;
+    height: 59px;
+    margin: 0 auto;
+    color: #fff;
+
+    span.logo{
+      display: inline-block;
+      background: #ff6455 url('/images/hifi-logo_white.png') no-repeat center center;
+      background-size: 39px 39px;
+      height: 59px;
+      width: 59px;
+      @include retina{ background-image: url('/images/hifi-logo_white@2x.png'); }
+    }
+
+    h1, h2{ display: inline-block; line-height: 59px; vertical-align: top; text-transform: uppercase; }
+    h1{ margin-left: 10px; font-weight: bold; }
+    h2{ font-weight: 200; }
+
+    #capture-enable-btn{
+      margin-top: 14px;
+      float: right;
+      font-size: 12px;
+      p{color: #fff;}
+    }
+  }
+
+  #page-nav{
+    background-color: #404A4C;
+    ul{
+      display: block;
+      width: 90%;
+      margin: 0 auto;
+      padding-left: 69px;
+      font-size: 14px;
+      li{ display: inline-block; color: #fff; padding: 8px 4px 8px 4px; }
+      li + li{ margin-left: 10px; }
+      li.info{
+        color: #999;
+      }
+      a{ color: #fff; text-decoration: none; }
+    }
+  }
+}
+
+#primary{
+  width: 100%;
+  position: fixed;
+  height: 100%;
+}
