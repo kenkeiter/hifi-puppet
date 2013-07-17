@@ -1,6 +1,10 @@
 /*
- * Implements a quaternion-based AHRS filter.
- */
+ahrs.go by Kenneth Keiter <ken@kenkeiter.com>
+Copyright (c) 2013  High Fidelity, Inc. All rights reserved.
+
+Implements a quaternion AHRS filter based upon Sebastian Madgwick's design, and
+the code at http://www.x-io.co.uk/open-source-imu-and-ahrs-algorithms/
+*/
 
 package main
 

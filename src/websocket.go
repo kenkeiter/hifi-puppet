@@ -1,3 +1,10 @@
+/*
+websocket.go by Kenneth Keiter <ken@kenkeiter.com>
+Copyright (c) 2013  High Fidelity, Inc. All rights reserved.
+
+Implements the websocket interface for sensor data.
+*/
+
 package main
 
 import (

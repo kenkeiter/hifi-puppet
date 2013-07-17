@@ -1,3 +1,10 @@
+/*
+main.go by Kenneth Keiter <ken@kenkeiter.com>
+Copyright (c) 2013  High Fidelity, Inc. All rights reserved.
+
+Puppet is an experimental IMU-to-browser interface using websockets.
+*/
+
 package main
 
 import (

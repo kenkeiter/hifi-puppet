@@ -1,6 +1,8 @@
-/* sensor.go by Kenneth Keiter <ken@kenkeiter.com>
-   An object implementing the Sensor interface is multiplexed into the live
-   update stream by puppet.
+/*
+sensor.go by Kenneth Keiter <ken@kenkeiter.com>
+Copyright (c) 2013  High Fidelity, Inc. All rights reserved.
+
+Basic sensor constructs.
 */
 
 package main
