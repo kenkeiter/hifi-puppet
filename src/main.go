@@ -10,7 +10,7 @@ import (
 )
 
 var hostAddr = flag.String("host", ":8192", "host:port for client-side UI")
-var assetPath = flag.String("asset_path", "/var/lib/puppet-server", "absolute path to UI asset directory")
+var assetPath = flag.String("asset_path", "src/www", "relative or absolute path to UI asset directory")
 var imuPort = flag.String("imu_port", "/dev/tty.usbmodem1411", "absolute path to sensor device (e.g. /dev/tty.<port>)")
 
 func main() {
