@@ -53,6 +53,16 @@ In order to allow users to connect to Puppet from outside your LAN, you'll need 
 2. Enable port-forwarding on your router. You'll need to forward port 8192 from your WAN to your local machine.
 3. Determine your public IP address (you can [find out from Google](https://www.google.com/search?q=whats+my+ip&oq=whats+my+ip)), and direct remote clients to `http://<your public IP>:8192/`.
 
+## Development
+
+You can build and test Puppet using the instructions in the "Quick Start" section. When working on the web interface, you'll need to have the `sass` gem installed, as well as the CoffeeScript compiler. Google for how to get these set up.
+
+Then, to watch the appropriate folders for changes:
+
+      $ cd src/www
+      $ scss -w src/scss/:styles/
+      $ coffee -o scripts/ -cw src/coffeescripts/
+
 ## Known Issues
 
 * Occasionally, the sensor interface will not be reset to its previous state when the application is exited; when restarted, the application will hang while connecting to the sensor interface. If this occurs, simply unplug the board, plug it back in, and attempt to start the application again.
