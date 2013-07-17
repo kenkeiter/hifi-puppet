@@ -16,22 +16,25 @@ Puppet is an experimental IMU-to-browser interface using websockets.
 
 ## Quick Start
 
-1. Ensure you have Go installed on your machine. You may either [download a pre-built binary](https://code.google.com/p/go/downloads/list) for your platform, or (if you're on OS X) install it via [Homebrew](http://mxcl.github.io/homebrew/) using the following command:
+1. Ensure that you have Go installed on your machine. You may either [download a pre-built binary](https://code.google.com/p/go/downloads/list) for your platform, or (if you're on OS X) install it via [Homebrew](http://mxcl.github.io/homebrew/) using the following command:
 
         $ brew install go
 
-2. Checkout this repository using Git:
+2. Clone the `hifi-puppet` repository using Git:
 
         $ git clone https://git.github.com/kenkeiter/hifi-puppet
 
 3. Build the executable for your platform. The makefile will automatically download and install any dependencies -- but it may take a second. Literally.
 
         $ cd hifi-puppet/
-        $ make && make install
+        $ make
 
 4. Start the server:
 
-        $ hifi-puppet
+        $ export GOMAXPROCS=4
+        $ build/hifi-puppet --imu_port /dev/tty.<insert port here>
+
+  You should see Puppet attempt to connect to the attached sensor board. Once this is successful, you may proceed to step 5.  
 
 5. You're done! Open a webkit-compatible browser, and direct it to: [http://localhost:8192/](http://localhost:8192/)
 
@@ -48,9 +51,16 @@ In order to allow users to connect to Puppet from outside your LAN, you'll need 
 
 1. Disable the firewall on your computer, or be sure to allow access to port 8192 via TCP.
 2. Enable port-forwarding on your router. You'll need to forward port 8192 from your WAN to your local machine.
-3. Determine your public IP address (you can [find out from Google](https://www.google.com/search?q=whats+my+ip&oq=whats+my+ip)), and direct remote clients to `http://<your public IP>:8192/`
+3. Determine your public IP address (you can [find out from Google](https://www.google.com/search?q=whats+my+ip&oq=whats+my+ip)), and direct remote clients to `http://<your public IP>:8192/`.
+
+## Known Issues
+
+* Occasionally, the sensor interface will not be reset to its previous state when the application is exited; when restarted, the application will hang while connecting to the sensor interface. If this occurs, simply unplug the board, plug it back in, and attempt to start the application again.
+* There's not a lot of error handling; if things go wrong, a thread may crash -- but typically the application will stay up.
 
 ## References
 
 1. [MPU9150Lib](https://github.com/Pansenti/MPU9150Lib/blob/master/libraries/MPU9150Lib/MPU9150Lib.cpp) -- A common library for the MPU-9150
-2. [SerialInterface.cpp](https://github.com/worklist/hifi/blob/master/interface/src/SerialInterface.cpp) -- High Fidelity's serial interface for the Maple host board attached to the MPU-9150.
+2. [SerialInterface.cpp](https://github.com/worklist/hifi/blob/master/interface/src/SerialInterface.cpp) -- High Fidelity's serial interface to the ARM host board attached to the MPU-9150.
+3. ["An efficient orientation filter for inertial/magnetic sensor arrays"](http://www.x-io.co.uk/res/doc/madgwick_internal_report.pdf) by Sebastian O.H. Madgwick
+4. [Open source IMU and AHRS algorithms](http://www.x-io.co.uk/open-source-imu-and-ahrs-algorithms/)

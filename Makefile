@@ -7,15 +7,15 @@ install-deps:
 build: install-deps
 	rm -rf build
 	mkdir build
-	cd src/ && go build -o ../build/puppet-server
+	cd src/ && go build -o ../build/hifi-puppet
 
-install: build
-	cp build/puppet-server /usr/local/bin/puppet-server
-	chmod 0755 /usr/local/bin/puppet-server
+# install: build
+# 	cp build/hifi-puppet /usr/local/bin/hifi-puppet
+# 	chmod 0755 /usr/local/bin/hifi-puppet
 
-uninstall:
-	rm /usr/local/bin/puppet-server
-	rm -rf /var/lib/puppet-server
+# uninstall:
+# 	rm /usr/local/bin/hifi-puppet
+# 	rm -rf /var/lib/hifi-puppet
 
 clean:
 	rm -rf build/
